@@ -1,0 +1,36 @@
+started consumming
+received in main
+b'{"id": 6, "title": "test", "image": "1"}'
+properties --  product_created
+started consumming
+received in main
+b'{"id": 7, "title": "test", "image": "2"}'
+properties --  product_created
+started consumming
+received in main
+b'{"id": 8, "title": "testing", "image": "with print product1"}'
+properties --  product_created
+started consumming
+received in main
+b'{"id": 9, "title": "testing 1", "image": "with print product1"}'
+properties --  product_created
+started consumming
+received in main
+b'{"id": 10, "title": "testing 2", "image": "with print product please work"}'
+properties --  product_created
+started consumming
+received in main
+b'{"id": 11, "title": "testing this was the main test", "image": "please work"}'
+properties --  product_created
+started consumming
+started consumming
+started consumming
+started consumming
+started consumming
+started consumming
+started consumming
+started consumming
+started consumming
+started consumming
+started consumming
+started consumming
