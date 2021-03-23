@@ -2,12 +2,12 @@
 
 import pika , json
 
-params = pika.URLParameters('amqps://jdbfsffv:q0qNYM29La7lp8D-agpQQRa5GLaKyCBp@jellyfish.rmq.cloudamqp.com/jdbfsffv')
-# params = pika.ConnectionParameters('amqps://jdbfsffv:q0qNYM29La7lp8D-agpQQRa5GLaKyCBp@jellyfish.rmq.cloudamqp.com/jdbfsffv')
+# params = pika.URLParameters('amqps://jdbfsffv:q0qNYM29La7lp8D-agpQQRa5GLaKyCBp@jellyfish.rmq.cloudamqp.com/jdbfsffv')
+# # params = pika.ConnectionParameters('amqps://jdbfsffv:q0qNYM29La7lp8D-agpQQRa5GLaKyCBp@jellyfish.rmq.cloudamqp.com/jdbfsffv')
 
 
-connection = pika.BlockingConnection(params)
-
+# connection = pika.BlockingConnection(params)
+connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
 channel = connection.channel()
 
     
@@ -19,11 +19,11 @@ channel = connection.channel()
 def publish(method, body):
     import pika , json
 
-    params = pika.URLParameters('amqps://jdbfsffv:q0qNYM29La7lp8D-agpQQRa5GLaKyCBp@jellyfish.rmq.cloudamqp.com/jdbfsffv')
+    # params = pika.URLParameters('amqps://jdbfsffv:q0qNYM29La7lp8D-agpQQRa5GLaKyCBp@jellyfish.rmq.cloudamqp.com/jdbfsffv')
     # params = pika.ConnectionParameters('amqps://jdbfsffv:q0qNYM29La7lp8D-agpQQRa5GLaKyCBp@jellyfish.rmq.cloudamqp.com/jdbfsffv')
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
 
-
-    connection = pika.BlockingConnection(params)
+    # connection = pika.BlockingConnection(params)
 
     channel = connection.channel()
 

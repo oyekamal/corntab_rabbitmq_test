@@ -1,5 +1,5 @@
 import time 
-from testrab.models import Product1
+# from testrab.models import Product1
 import pika, json
 def my_cron_job():
     print("hello im running.... ")
@@ -13,8 +13,9 @@ def my_cron_job():
 def consumer_cronjob():
         import pika, json
 
-        params = pika.URLParameters('amqps://jdbfsffv:q0qNYM29La7lp8D-agpQQRa5GLaKyCBp@jellyfish.rmq.cloudamqp.com/jdbfsffv')
-        connection = pika.BlockingConnection(params)
+        connection = pika.BlockingConnection(
+                        pika.ConnectionParameters(host='localhost'))
+        # connection = pika.BlockingConnection(params)
         channel = connection.channel()
         channel.queue_declare(queue='main')
         def callback(ch,method,properties, body):
@@ -43,3 +44,59 @@ def consumer_cronjob():
         print("started consumming")
         channel.start_consuming()
         channel.close()
+        
+        
+def server():
+    import pika
+
+    connection = pika.BlockingConnection(
+        pika.ConnectionParameters(host='localhost'))
+
+    channel = connection.channel()
+
+    channel.queue_declare(queue='rpc_queue')
+
+
+    def fib(n):
+        if n == 0:
+            return 0
+        elif n == 1:
+            return 1
+        else:
+            print(n)
+            # return fib(n - 1) + fib(n - 2)
+            return n*n
+    
+    # def product1data(id_):
+    #     from testrab.models import Product1
+    #     from testrab.serializer import Product1Serializer
+    #     obj = Product1.objects.filter(id=id_)
+    #     serializer = Product1Serializer(obj)
+    #     return serializer.data
+
+
+    def on_request(ch, method, props, body):
+        n = int(body)
+
+        print(" [.] fib(%s)" % n)
+        response = fib(n)
+        # response = product1data(n)
+        # try:
+        #     print(response)
+        # except Exception as e:
+        #     print(e)
+        # json.dumps(body)
+        ch.basic_publish(exchange='',
+                        routing_key=props.reply_to,
+                        properties=pika.BasicProperties(correlation_id = \
+                                                            props.correlation_id),
+                        body=str(response))
+        ch.basic_ack(delivery_tag=method.delivery_tag)
+
+
+    channel.basic_qos(prefetch_count=1)
+    channel.basic_consume(queue='rpc_queue', on_message_callback=on_request)
+
+    print(" [x] Awaiting RPC requests")
+    channel.start_consuming()
+    

@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -40,6 +39,7 @@ INSTALLED_APPS = [
     'django_crontab',
     'rest_framework',
     'testrab',
+    'background_task',
 ]
 
 MIDDLEWARE = [
@@ -53,7 +53,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'learningCronjob.urls'
-
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -123,7 +123,15 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CRONJOBS = [
-    ('*/1 * * * *', 'learningCronjob.corn.my_cron_job','>> /home/oye/Documents/cron_job/data.log'),
-    ('*/1 * * * *', 'learningCronjob.corn.consumer_cronjob','>> /home/oye/Documents/cron_job/data1.log'),
+    # ('*/1 * * * *', 'learningCronjob.corn.my_cron_job','>> /home/oye/Documents/cron_job/data.log'),
+    # ('*/1 * * * *', 'learningCronjob.corn.consumer_cronjob','>> /home/oye/Documents/cron_job/data1.log'),
+    # ('*/1 * * * *', 'learningCronjob.corn.server','>> /home/oye/Documents/cron_job/server.log'),
+    ('*/1 * * * *', 'learningCronjob.server.main','>> /home/oye/Documents/cron_job/server.log'),
 ]
+
+
+# r=subprocess.call(['python', ''])
 #consumer_cronjob
+#server
+# execfile('server.py')
+

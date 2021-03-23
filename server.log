@@ -1,0 +1,47 @@
+ [x] Awaiting RPC requests
+ [.] fib(1)
+[OrderedDict([('id', 1), ('title', 'a'), ('image', '1')])]
+ [x] Awaiting RPC requests
+ [.] fib(1)
+[OrderedDict([('id', 1), ('title', 'a'), ('image', '1')])]
+ [x] Awaiting RPC requests
+ [.] fib(1)
+[OrderedDict([('id', 1), ('title', 'a'), ('image', '1')])]
+ [x] Awaiting RPC requests
+ [.] fib(1)
+[OrderedDict([('id', 1), ('title', 'a'), ('image', '1')])]
+ [x] Awaiting RPC requests
+ [.] fib(1)
+[OrderedDict([('id', 1), ('title', 'a'), ('image', '1')])]
+ [x] Awaiting RPC requests
+ [.] fib(1)
+[OrderedDict([('id', 1), ('title', 'a'), ('image', '1')])]
+ [x] Awaiting RPC requests
+ [.] fib(1)
+[OrderedDict([('id', 1), ('title', 'a'), ('image', '1')])]
+ [x] Awaiting RPC requests
+ [.] fib(1)
+[OrderedDict([('id', 1), ('title', 'a'), ('image', '1')])]
+ [x] Awaiting RPC requests
+ [.] fib(1)
+<QuerySet [{'id': 1}]>
+ [x] Awaiting RPC requests
+ [x] Awaiting RPC requests
+ [x] Awaiting RPC requests
+ [.] fib(1)
+<QuerySet [{'id': 1}]>
+ [x] Awaiting RPC requests
+ [x] Awaiting RPC requests
+ [x] Awaiting RPC requests
+ [.] fib(1)
+<QuerySet [{'id': 1}]>
+ [.] fib(1)
+<QuerySet [{'id': 1}]>
+ [.] fib(1)
+<QuerySet [{'id': 1}]>
+ [.] fib(1)
+<QuerySet [{'id': 1}]>
+ [.] fib(2)
+<QuerySet [{'id': 2}]>
+ [.] fib(2)
+<QuerySet [{'id': 2}]>

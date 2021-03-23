@@ -8,7 +8,8 @@ from .serializer import Product1Serializer, ProductSerializer
 from .models import Product1, Product
 from rest_framework.response import Response
 from .producer import publish
-
+from learningCronjob.client import RpcClient
+import json
 class Product1Viewset(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list`, `create`, `retrieve`,
@@ -32,10 +33,19 @@ class ProductView(APIView):
         return Response(serializer.data)
     
     def post(self, request):
-        serializer = ProductSerializer(data=request.data)
+        serializer = ProductSerializer(data=request.datsa)
         if serializer.is_valid():
             serializer.save()
             publish('product_created', serializer.data)
             return Response(serializer.data)
         return Response(serializer.errors)
+
+class GetProductone(APIView):
+    def get(self, request, id):
+        print('id', id)
         
+        client = RpcClient()
+        data = client.call(id)
+        print(type(data.decode()))
+        data=data.decode()
+        return Response(json.loads(data))

@@ -11,4 +11,5 @@ router.register(r'product1', views.Product1Viewset)
 urlpatterns = [
     path('', include(router.urls)),
     path('product/', views.ProductView.as_view()),
+    path('product/<int:id>', views.GetProductone.as_view()),
 ]
